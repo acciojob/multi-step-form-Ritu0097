@@ -1,3 +1,4 @@
+// App.js
 import React, { useState } from 'react';
 import Step from './Step';
 
@@ -26,55 +27,21 @@ function App() {
   };
 
   const handleSubmit = () => {
+    // Submit form logic here
     console.log('Form submitted with data:', formData);
-  };
-
-  const renderStepComponent = () => {
-    switch (step) {
-      case 1:
-        return (
-          <Step
-            id="step1"
-            step={step}
-            formData={formData}
-            handleChange={handleChange}
-            nextStep={nextStep}
-            prevStep={prevStep}
-            handleSubmit={handleSubmit}
-          />
-        );
-      case 2:
-        return (
-          <Step
-            id="step2"
-            step={step}
-            formData={formData}
-            handleChange={handleChange}
-            nextStep={nextStep}
-            prevStep={prevStep}
-            handleSubmit={handleSubmit}
-          />
-        );
-      case 3:
-        return (
-          <Step
-            id="step3"
-            step={step}
-            formData={formData}
-            handleChange={handleChange}
-            nextStep={nextStep}
-            prevStep={prevStep}
-            handleSubmit={handleSubmit}
-          />
-        );
-      default:
-        return null;
-    }
   };
 
   return (
     <div>
-      {renderStepComponent()}
+      <Step
+        id={`step${step}`}
+        step={step}
+        formData={formData}
+        handleChange={handleChange}
+        nextStep={nextStep}
+        prevStep={prevStep}
+        handleSubmit={handleSubmit}
+      />
     </div>
   );
 }
