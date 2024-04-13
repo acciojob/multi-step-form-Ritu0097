@@ -30,7 +30,7 @@ function Step({ step, formData, handleChange, nextStep, prevStep, handleSubmit }
         );
       case 3:
         return (
-          <div  id='step3'>
+          <div id='step3'>
             <label htmlFor="card_info">Card Information:</label>
             <input type="text" id="card_info" value={formData.card_info} onChange={handleChange} />
             <br />
