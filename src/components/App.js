@@ -33,15 +33,39 @@ function App() {
 
   return (
     <div>
-      <Step
-        id={`step${step}`}
-        step={step}
-        formData={formData}
-        handleChange={handleChange}
-        nextStep={nextStep}
-        prevStep={prevStep}
-        handleSubmit={handleSubmit}
-      />
+      {step === 1 && (
+        <Step
+          id="step1"
+          step={step}
+          formData={formData}
+          handleChange={handleChange}
+          nextStep={nextStep}
+          prevStep={prevStep}
+          handleSubmit={handleSubmit}
+        />
+      )}
+      {step === 2 && (
+        <Step
+          id="step2"
+          step={step}
+          formData={formData}
+          handleChange={handleChange}
+          nextStep={nextStep}
+          prevStep={prevStep}
+          handleSubmit={handleSubmit}
+        />
+      )}
+      {step === 3 && (
+        <Step
+          id="step3"
+          step={step}
+          formData={formData}
+          handleChange={handleChange}
+          nextStep={nextStep}
+          prevStep={prevStep}
+          handleSubmit={handleSubmit}
+        />
+      )}
     </div>
   );
 }
