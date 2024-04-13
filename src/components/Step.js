@@ -1,56 +1,97 @@
-import React from 'react';
+import React from "react";
 
-function Step({ step, formData, handleChange, nextStep, prevStep, handleSubmit }) {
-  const renderStep = () => {
-    switch (step) {
-      case 1:
-        return (
-          <div>
-            <label htmlFor="first_name">First Name:</label>
-            <input type="text" id="first_name" value={formData.first_name} onChange={handleChange} />
-            <br />
-            <label htmlFor="last_name">Last Name:</label>
-            <input type="text" id="last_name" value={formData.last_name} onChange={handleChange} />
-            <br />
-            <button onClick={nextStep}>Next</button>
-          </div>
-        );
-      case 2:
-        return (
-          <div>
-            <label htmlFor="model">Car Model:</label>
-            <input type="text" id="model" value={formData.model} onChange={handleChange} />
-            <br />
-            <label htmlFor="car_price">Car Price:</label>
-            <input type="text" id="car_price" value={formData.car_price} onChange={handleChange} />
-            <br />
-            <button onClick={prevStep}>Previous</button>
-            <button onClick={nextStep}>Next</button>
-          </div>
-        );
-      case 3:
-        return (
-          <div>
-            <label htmlFor="card_info">Card Information:</label>
-            <input type="text" id="card_info" value={formData.card_info} onChange={handleChange} />
-            <br />
-            <label htmlFor="expiry_date">Expiry Date:</label>
-            <input type="text" id="expiry_date" value={formData.expiry_date} onChange={handleChange} />
-            <br />
-            <button onClick={prevStep}>Previous</button>
-            <button onClick={handleSubmit}>Submit</button>
-          </div>
-        );
-      default:
-        return null;
-    }
+const Step = ({
+  step,
+  formData,
+  setFormData,
+  onNextStep,
+  onPrevStep,
+  onSubmit,
+}) => {
+  const { firstName, lastName, model, cardPrice, cardInfo, expireDate } =
+    formData;
+  const handleChange = (e) => {
+    e.preventDefault();
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
-  return (
-    <div>
-      {renderStep()}
-    </div>
-  );
-}
+  switch (step) {
+    case 1:
+      return (
+        <div id="step1">
+          <input
+            type="text"
+            name="firstName"
+            placeholder="First Name"
+            value={firstName}
+            id="first_name"
+            onChange={(e) => handleChange(e)}
+          />
+          <br />
+          <input
+            type="text"
+            name="lastName"
+            placeholder="Last Name"
+            value={lastName}
+            id="last_name"
+            onChange={(e) => handleChange(e)}
+          />
+          <br />
+          <button onClick={onNextStep}>Next</button>
+        </div>
+      );
+    case 2:
+      return (
+        <div id="step2">
+          <input
+            type="text"
+            name="model"
+            placeholder="model"
+            value={model}
+            id="model"
+            onChange={(e) => handleChange(e)}
+          />
+          <br />
+          <input
+            type="text"
+            name="cardPrice"
+            placeholder="Car Price"
+            value={cardPrice}
+            id="car_price"
+            onChange={(e) => handleChange(e)}
+          />
+          <br />
+          <button onClick={onPrevStep}>Previous</button>
+          <button onClick={onNextStep}>Next</button>
+        </div>
+      );
+    case 3:
+      return (
+        <div id="step3">
+          <input
+            type="text"
+            name="cardInfo"
+            placeholder=""
+            value={cardInfo}
+            id="card_info"
+            onChange={(e) => handleChange(e)}
+          />
+          <br />
+          <input
+            type="text"
+            name="expireDate"
+            placeholder="MM/YYYY"
+            value={expireDate}
+            id="expiry_date"
+            onChange={(e) => handleChange(e)}
+          />
+          <br />
+          <button onClick={onPrevStep}>Previous</button>
+          <button onClick={(e) => onSubmit(e)}>Submit</button>
+        </div>
+      );
+    default:
+      break;
+  }
+};
 
 export default Step;

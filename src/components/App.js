@@ -1,73 +1,39 @@
-// App.js
-import React, { useState } from 'react';
-import Step from './Step';
+import React, { useState } from "react";
+import "./../styles/App.css";
+import Step from "./Step";
 
-function App() {
-  const [step, setStep] = useState(1);
+const App = () => {
   const [formData, setFormData] = useState({
-    first_name: '',
-    last_name: '',
-    model: '',
-    car_price: '',
-    card_info: '',
-    expiry_date: ''
+    firstName: "",
+    lastName: "",
+    model: "",
+    cardPrice: "",
+    cardInfo: "",
+    expireDate: "",
   });
-
-  const nextStep = () => {
+  const [step, setStep] = useState(1);
+  const onNextStep = () => {
     setStep(step + 1);
   };
-
-  const prevStep = () => {
+  const onPrevStep = () => {
     setStep(step - 1);
   };
-
-  const handleChange = (e) => {
-    const { id, value } = e.target;
-    setFormData({ ...formData, [id]: value });
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
   };
-
-  const handleSubmit = () => {
-    // Submit form logic here
-    console.log('Form submitted with data:', formData);
-  };
-
   return (
     <div>
-      {step === 1 && (
-        <Step
-          id="step1"
-          step={step}
-          formData={formData}
-          handleChange={handleChange}
-          nextStep={nextStep}
-          prevStep={prevStep}
-          handleSubmit={handleSubmit}
-        />
-      )}
-      {step === 2 && (
-        <Step
-          id="step2"
-          step={step}
-          formData={formData}
-          handleChange={handleChange}
-          nextStep={nextStep}
-          prevStep={prevStep}
-          handleSubmit={handleSubmit}
-        />
-      )}
-      {step === 3 && (
-        <Step
-          id="step3"
-          step={step}
-          formData={formData}
-          handleChange={handleChange}
-          nextStep={nextStep}
-          prevStep={prevStep}
-          handleSubmit={handleSubmit}
-        />
-      )}
+      <Step
+        step={step}
+        formData={formData}
+        setFormData={setFormData}
+        onNextStep={onNextStep}
+        onPrevStep={onPrevStep}
+        onSubmit={onSubmit}
+      />
     </div>
   );
-}
+};
 
 export default App;
