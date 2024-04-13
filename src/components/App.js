@@ -1,7 +1,6 @@
-import React from "react";
-import './../styles/App.css';
+import React, { useState } from 'react';
 import Step from './Step';
-import { useState } from "react";
+
 function App() {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -25,20 +24,57 @@ function App() {
     const { id, value } = e.target;
     setFormData({ ...formData, [id]: value });
   };
+
   const handleSubmit = () => {
     console.log('Form submitted with data:', formData);
   };
+
+  const renderStepComponent = () => {
+    switch (step) {
+      case 1:
+        return (
+          <Step
+            id="step1"
+            step={step}
+            formData={formData}
+            handleChange={handleChange}
+            nextStep={nextStep}
+            prevStep={prevStep}
+            handleSubmit={handleSubmit}
+          />
+        );
+      case 2:
+        return (
+          <Step
+            id="step2"
+            step={step}
+            formData={formData}
+            handleChange={handleChange}
+            nextStep={nextStep}
+            prevStep={prevStep}
+            handleSubmit={handleSubmit}
+          />
+        );
+      case 3:
+        return (
+          <Step
+            id="step3"
+            step={step}
+            formData={formData}
+            handleChange={handleChange}
+            nextStep={nextStep}
+            prevStep={prevStep}
+            handleSubmit={handleSubmit}
+          />
+        );
+      default:
+        return null;
+    }
+  };
+
   return (
     <div>
-      <Step
-        id={`step${step}`}
-        step={step}
-        formData={formData}
-        handleChange={handleChange}
-        nextStep={nextStep}
-        prevStep={prevStep}
-        handleSubmit={handleSubmit}
-      />
+      {renderStepComponent()}
     </div>
   );
 }
