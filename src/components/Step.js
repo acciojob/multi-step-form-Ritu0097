@@ -1,4 +1,3 @@
-// Step.js
 import React from 'react';
 
 function Step({ step, formData, handleChange, nextStep, prevStep, handleSubmit }) {
@@ -6,7 +5,7 @@ function Step({ step, formData, handleChange, nextStep, prevStep, handleSubmit }
     switch (step) {
       case 1:
         return (
-          <div>
+          <div id='step1'>
             <label htmlFor="first_name">First Name:</label>
             <input type="text" id="first_name" value={formData.first_name} onChange={handleChange} />
             <br />
@@ -18,7 +17,7 @@ function Step({ step, formData, handleChange, nextStep, prevStep, handleSubmit }
         );
       case 2:
         return (
-          <div>
+          <div id='step2'>
             <label htmlFor="model">Car Model:</label>
             <input type="text" id="model" value={formData.model} onChange={handleChange} />
             <br />
@@ -31,7 +30,7 @@ function Step({ step, formData, handleChange, nextStep, prevStep, handleSubmit }
         );
       case 3:
         return (
-          <div>
+          <div  id='step3'>
             <label htmlFor="card_info">Card Information:</label>
             <input type="text" id="card_info" value={formData.card_info} onChange={handleChange} />
             <br />
