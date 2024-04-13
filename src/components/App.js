@@ -31,6 +31,7 @@ function App() {
   return (
     <div>
       <Step
+        id={`step${step}`}
         step={step}
         formData={formData}
         handleChange={handleChange}
