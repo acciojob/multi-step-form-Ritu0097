@@ -1,7 +1,7 @@
 import React from "react";
 import './../styles/App.css';
 import Step from './Step';
-
+import { useState } from "react";
 function App() {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -25,11 +25,9 @@ function App() {
     const { id, value } = e.target;
     setFormData({ ...formData, [id]: value });
   };
-
   const handleSubmit = () => {
     console.log('Form submitted with data:', formData);
   };
-
   return (
     <div>
       <Step
