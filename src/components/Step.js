@@ -1,6 +1,5 @@
 // Step.js
 import React from 'react';
-import './Step.css';
 
 const Step = ({ step, formData, setFormData, onNext, onPrev, onSubmit }) => {
   const handleChange = (e) => {
