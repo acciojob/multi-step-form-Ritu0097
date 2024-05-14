@@ -1,45 +1,38 @@
-// App.js
-import React, { useState } from 'react'
-import Step from './Step'
+import React, { useState } from 'react';
+import Step from './Step'; // Make sure to adjust the import path
 import './App.css'
 
-const App = () => {
-	const [currentStep, setCurrentStep] = useState(1)
-	const [formData, setFormData] = useState({
-		first_name: '',
-		last_name: '',
-		model: '',
-		car_price: '',
-		card_info: '',
-		expiry_date: ''
-	})
 
-	const handleNextStep = () => {
-		setCurrentStep(currentStep + 1)
-	}
+const MultiStepForm = () => {
+  const [currentStep, setCurrentStep] = useState(1);
 
-	const handlePrevStep = () => {
-		setCurrentStep(currentStep - 1)
-	}
+  const nextStep = () => {
+    // rftgb35htg34
+    if (currentStep < 3) {
+      setCurrentStep(currentStep + 1);
+    }
+  };
 
-	const handleSubmit = () => {
-		// Handle form submission, e.g., sending data to server
-		console.log('Form submitted:', formData)
-	}
+  const prevStep = () => {
+    if (currentStep > 1) {
+      setCurrentStep(currentStep - 1);
+    }
+  };
 
-	return (
-		<div className="container">
-			<h1>Multi-Step Form</h1>
-			<Step
-				step={currentStep}
-				formData={formData}
-				setFormData={setFormData}
-				onNext={handleNextStep}
-				onPrev={handlePrevStep}
-				onSubmit={handleSubmit}
-			/>
-		</div>
-	)
-}
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    alert('Form submitted successfully!');
+    // You can add AJAX or other logic for form submission here
+  };
 
-export default App
+  return (
+    // fvt4gt4wg4dedcdcw
+    <form id="multiStepForm" onSubmit={handleSubmit}>
+      <Step stepNumber={1} currentStep={currentStep} onNext={nextStep} onPrev={prevStep} />
+      <Step stepNumber={2} currentStep={currentStep} onNext={nextStep} onPrev={prevStep} />
+      <Step stepNumber={3} currentStep={currentStep} onNext={nextStep} onPrev={prevStep} />
+    </form>
+  );
+};
+
+export default MultiStepForm;
